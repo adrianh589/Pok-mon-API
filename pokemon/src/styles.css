@@ -1,0 +1,67 @@
+/* You can add global styles to this file, and also import other style files */
+
+/*Types of pokemons colors*/
+.types .fire{
+  background-color: red !important;
+}
+
+.types .poison{
+  background-color: #9d00ff !important;
+}
+
+.types .grass{
+  background-color: #88ff00 !important;
+}
+
+.types .normal{
+  background-color: #919192 !important;
+}
+
+.types .bug{
+  background-color: #59ff00 !important;
+}
+
+.types .water{
+  background-color: #00fff7 !important;
+}
+
+.types .ground{
+  background-color: #653434 !important;
+}
+
+.types .electric{
+  background-color: #f8ff05 !important;
+}
+
+.types .steel{
+  background-color: #444444 !important;
+}
+
+.types .fighting{
+  background-color: #ff4e00 !important;
+}
+
+.types .dragon{
+  background-color: #00ff5c !important;
+}
+
+.types .psychic{
+  background-color: #ff7ee8 !important;
+}
+
+.types .rock{
+  background-color: #7d3939 !important;
+}
+
+.types .ghost{
+  background-color: #9500ff !important;
+}
+
+.types .flying{
+  background-color: #0066ff !important;
+}
+
+.card:hover{
+  border-color: #0037ff !important;
+  box-shadow: 0px 5px 20px #00fff7 !important;
+}

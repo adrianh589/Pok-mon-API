@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-4 col-lg-3 my-2" *ngFor="let pokemon of pokemons">
+
+    <div class="card border border-dark shadow">
+      <!-- Imagen del pokemon -->
+      <img [src]="pokemon['sprites'].front_default" class="card-img-top" alt="...">
+
+      <div class="card-body">
+
+        <!-- Nombre del pokemon -->
+        <h5 class="card-title text-capitalize h3">{{ pokemon['name'] }}</h5>
+
+        <!-- Descripcion del pokemon -->
+        <p class="card-text">
+          {{pokemon['description']}}
+        </p>
+
+        <!-- Stats -->
+        <h5>Stats</h5>
+        <div *ngFor="let stat of pokemon['stats']"
+          class="d-block stats">
+
+          <label class="m-0">{{stat['stat'].name}}</label>
+          <div class="progress stat mb-2">
+            <div
+              [ngClass]="{'bg-success':stat['stat'].name == 'hp',
+               'bg-danger':stat['stat'].name == 'attack',
+               'bg-warning':stat['stat'].name == 'special-attack',
+               'bg-info':stat['stat'].name == 'special-defense',
+               'bg-secondary':stat['stat'].name == 'speed'}"
+              class="progress-bar progress-bar-animated progress-bar-striped" role="progressbar" style="width:{{stat['base_stat']/2}}%"></div>
+          </div>
+
+        </div>
+
+        <!-- Tipos -->
+        <h5>Types</h5>
+        <div class="d-block types">
+          <span *ngFor="let type of pokemon['types']"
+                class="badge badge-pill badge-primary m-1 {{ type.type.name }}">{{ type.type.name }}</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
