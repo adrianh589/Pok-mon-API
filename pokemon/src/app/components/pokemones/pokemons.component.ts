@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {PokeapiService} from "../../services/pokeapi.service";
 import {HttpClient} from "@angular/common/http";
 import {isEmpty} from "rxjs/operators";
+import {PokemonModel} from "../models/pokemon.model";
 
 @Component({
   selector: 'app-pokemons',
@@ -9,10 +10,10 @@ import {isEmpty} from "rxjs/operators";
 })
 export class PokemonsComponent implements OnInit {
 
-  pokemons: Object[] = [];
+  pokemons: PokemonModel[] = [];
+  loading = true;
 
-  constructor(private api: PokeapiService,
-              private http: HttpClient) {
+  constructor(private api: PokeapiService) {
     this.getAllPokemons();
   }
 
@@ -21,22 +22,10 @@ export class PokemonsComponent implements OnInit {
   }
 
   getAllPokemons() {
-
-    console.log('hice la llamada')
-
-    this.api.getAllPokemons().subscribe((nameUrl: any[]) => {
-      nameUrl.forEach((info: Object) => {
-        this.api.getInfoPokemon(info['url']).subscribe((pokemon: Object) => {
-          this.api.getDescriptionPokemon(pokemon['id']).subscribe(data => {
-            let description = data['flavor_text_entries'][0]['flavor_text'];
-            this.pokemons.push(pokemon = Object.assign(pokemon, {
-              description: description
-            }));
-          });
-        });
-      })
+    this.api.getAllPokemons().subscribe( res => {
+      this.pokemons = res;
+      this.loading = false;
     });
-
   }
 
 }
